@@ -51,6 +51,7 @@ route.get('/getSupplierDetails', async (req, res) => {
 
   const combinerDetails = {
     id: userdetails._id,
+    
     supplierid: supplierDetails._id,
     email: userdetails.email,
     mobile: userdetails.mobile,

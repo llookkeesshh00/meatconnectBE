@@ -55,7 +55,52 @@ route.get('/getContracts', authenticateSupplier, async (req, res) => {
     }
 
 })
+route.get('/getContracts/supplier', authenticateSupplier, async (req, res) => {
+    try {
+        let user = req.user.id;
+        let supplier = await Supplier.findOne({ user })
+        let supplier_id = supplier._id;
 
+
+        let allcontracts = await Contract.find({ supplier: supplier_id }).populate('productId');
+        let detailsArray=[]
+        console.log(allcontracts)
+        for (let i = 0; i < allcontracts.length; i++) {
+            const contract = allcontracts[i];
+          
+           
+            let buyer=await Buyer.findOne({_id:contract.buyer});
+            let currdate= new Date();
+            
+
+            let status=true;
+            if(contract.endDate<currdate) status=false;
+
+            const details = {
+                id:contract.supplier , 
+                productId:contract.productId._id,
+                buyername:buyer.companyName,
+                productCatogery:contract.productId.productCategory,
+                productName:contract.productId.productName,
+                productPrice:contract.productId.price,
+                duration:contract.period ,
+                status,
+                createdAt: contract.startDate,
+                
+            };
+
+            detailsArray.push(details);
+        }
+      
+      res.status(200).json({detailsArray,message:"sucess",ok:true});
+
+    }
+    catch (error) {
+        console.log("error:",error);
+        res.status(500).json({error,ok:false});
+    }
+
+})
 route.post('/makeContract', async (req, res) => {
     try {
         const currentDate = new Date()

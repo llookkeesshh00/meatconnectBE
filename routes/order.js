@@ -37,7 +37,7 @@ route.get('/getOrders', async (req, res) => {
 
         let orders = await order.find({ buyer_id }).populate('product_id');
 
-        console.log(orders);
+      
         res.status(200).json({ ok: true, orders:orders });
     }
     catch (error) {

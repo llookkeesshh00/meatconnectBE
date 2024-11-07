@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const connectionTo = async () => {
   try {
     console.log('avd');
-    await mongoose.connect('mongodb+srv://llookkeesshh00:inZzxHTVXJiyyspj@cluster0.wtltk.mongodb.net/', {
+    await mongoose.connect('mongodb://localhost:27017/Meatconnect', {
    
     });
     console.log('Connection established');

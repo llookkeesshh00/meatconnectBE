@@ -40,7 +40,7 @@ route.get('/getBuyerDetails', authenticateSupplier, async (req, res) => {
 
 
 
-route.get('/getAllProducts', async (req, res) => {
+route.get('/getAllProducts',authenticateSupplier, async (req, res) => {
     try {
         // Fetch all products and populate the 'supplier' field with details from the Supplier model
         const products = await Product.find()

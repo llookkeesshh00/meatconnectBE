@@ -50,9 +50,9 @@ route.get('/getSupplierDetails', async (req, res) => {
   }
 
   const combinerDetails = {
-    id: userdetails._id,
+   
     
-    supplierid: supplierDetails._id,
+    id: supplierDetails._id,
     email: userdetails.email,
     mobile: userdetails.mobile,
     name: userdetails.name,
@@ -63,7 +63,7 @@ route.get('/getSupplierDetails', async (req, res) => {
     contractsHistory: supplierDetails.contractsHistory,
     orderHistory: supplierDetails.orderHistory,
   }
-  console.log(combinerDetails)
+  
   return res.status(200).json(combinerDetails);
 
 

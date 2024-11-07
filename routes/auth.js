@@ -7,6 +7,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 // Login route
 route.post('/login', async (req, res) => {
   try {
+    
     const { email, password } = req.body;
     const user = await User.findOne({ email });
 

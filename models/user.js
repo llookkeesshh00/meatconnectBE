@@ -10,7 +10,7 @@ const userSchema = new Schema({
    role: { type: String, enum: ['buyer', 'supplier', 'admin', 'legalTeam'], required: true }
 });
 
-
+//try to return adress part
 const supplierSchema = new Schema({
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true ,unique: true },
     email: { type: String, required: true },  // Same email as in user

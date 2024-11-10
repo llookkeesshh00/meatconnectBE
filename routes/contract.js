@@ -22,7 +22,7 @@ route.get('/getContracts/confirmed', authenticateSupplier, async (req, res) => {
         if (allcontracts) {
             for (let i = 0; i < allcontracts.length; i++) {
                 const contract = allcontracts[i];
-                console.log(contract)
+                
 
 
                 let supplier = await Supplier.findOne({ _id: contract.supplier });
@@ -111,7 +111,6 @@ route.get('/getContracts/supplier/confirmed', authenticateSupplier, async (req, 
         let supplier = await Supplier.findOne({ user })
         let supplier_id = supplier._id;
 
-        console.log(supplier_id);
         let allcontracts = await Contract.find({ supplier: supplier_id, confirmed: true }).populate('productId');
         let detailsArray = []
 
@@ -218,7 +217,7 @@ route.get('/acceptContract/:id', async (req, res) => {
     let buyer_email = await Contract.findOne({ _id: id }).populate('buyer');
 
     buyer_email = buyer_email.buyer.email;
-    console.log(buyer_email);
+    
     const mailOptions = {
         from: process.env.EMAIL_USER,
         to: buyer_email,

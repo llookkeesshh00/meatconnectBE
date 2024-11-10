@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv'); 
 const bcrypt = require('bcrypt'); 
 const jwt = require('jsonwebtoken'); 
+const moment= require('moment');
 
 dotenv.config(); // Load environment variables from .env
 
@@ -24,6 +25,7 @@ const productroutes= require('./routes/product')
 const contractroutes= require('./routes/contract')
 const deliveryroutes= require('./routes/delivery')
 const orderroutes= require('./routes/order')
+const summaryroutes= require('./routes/summary')
 
 //these are middle wares 
 
@@ -34,6 +36,7 @@ app.use('/product',productroutes);
 app.use('/contract',contractroutes);
 app.use('/delivery',deliveryroutes);
 app.use('/orders',orderroutes);
+app.use('/summary',summaryroutes)
 
 
 app.get('/', (req, res) => {

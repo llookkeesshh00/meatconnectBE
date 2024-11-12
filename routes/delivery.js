@@ -5,7 +5,7 @@ const { User, Supplier, Buyer } = require('../models/user');
 
 route.get('/getAdress', authenticateSupplier, async (req, res) => {
     try {
-        console.log(req.user)
+     
         let user_id = req.user.id;
         let buyer_id = await Buyer.findOne({ user: user_id })
         let deliveryDetails = await Delivery.find({ buyer: buyer_id._id });

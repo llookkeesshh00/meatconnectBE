@@ -45,7 +45,7 @@ route.get('/getAllProducts', authenticateSupplier, async (req, res) => {
   try {
     // Fetch all products and populate the 'supplier' field with details from the Supplier model
     const products = await Product.find()
-      .populate('supplier', 'companyName ') // Populate supplier details like name, email, company
+      .populate('supplier',) // Populate supplier details like name, email, company
       .exec();
     res.json(products);
   } catch (error) {

@@ -24,7 +24,7 @@ route.post('/login', async (req, res) => {
     const token = jwt.sign(
       { id: user._id, role: user.role, email: user.email },
       JWT_SECRET,
-      { expiresIn: '1h' } // Token expires in 1 hour
+      { expiresIn: '2h' } // Token expires in 2 hour
     );
 
     res.status(200).json({ 

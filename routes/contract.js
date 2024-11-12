@@ -333,7 +333,26 @@ route.post('/makeContract', async (req, res) => {
 
 
 })
+route.get('/getContracts/supplier/pending/notifications', authenticateSupplier, async (req, res) => {
+    try {
+      
+        let user = req.user.id;
+        let supplier = await Supplier.findOne({ user })
+        let supplier_id = supplier._id;
 
+
+        let allcontracts = await Contract.find({ supplier: supplier_id, confirmed: false }).populate('productId');
+        let count =allcontracts.length;
+       
+        res.status(200).json({ count, message: "sucessfully fetched notifiations", ok: true });
+
+    }
+    catch (error) {
+        console.log("error:", error);
+        res.status(500).json({ error, ok: false });
+    }
+
+})
 
 
 module.exports = route;

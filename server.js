@@ -43,6 +43,13 @@ app.get('/', (req, res) => {
   res.send('Hello World! hii');
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+
+  const port = process.env.PORT || 3000;
+  app.listen(port, () => {
+    console.log(`Server is running locally on http://localhost:${port}`);
+  });
+} else {
+  // Deployment for Vercel
+  module.exports = app;
+}

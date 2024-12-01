@@ -40,6 +40,10 @@ route.post('/login', async (req, res) => {
 });
 
 // Signup route
+route.get('/signup',(req,res)=>{
+  res.send('sign up hii')
+
+})
 route.post('/signup', async (req, res) => {
   try {
     let { email, password, role, name, mobile, companyName, address } = req.body;

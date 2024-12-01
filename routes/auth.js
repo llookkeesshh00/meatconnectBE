@@ -1,5 +1,5 @@
 const { User, Supplier, Buyer } = require('../models/user'); 
-const bcrypt = require('bcrypt');  
+const bcrypt = require('bcryptjs');  
 const route = require('express').Router();
 const jwt = require('jsonwebtoken');
 const JWT_SECRET = process.env.JWT_SECRET;
